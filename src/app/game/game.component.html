@@ -4,33 +4,37 @@
         <div class="card" >
             <div class="card-header">My Quotes</div>
             <ul class="list-group list-group-flush">
-                    <li *ngFor="let quote of Model.MyQuotes" class="list-group-item">
-                            {{quote}}
-                        </li>
-                  </ul>
+                <li *ngFor="let quote of Model.MyQuotes" class="list-group-item">
+                    {{quote}}
+                </li>
+            </ul>
           </div>
     </div>
     <div class="col-md-8">
-        <div class="card" >
-                <div class="card-header">Played Quotes</div>
+        <div class="card bg-success mb-3" >
+            <div class="card-header text-white">Played Quotes</div>
                 <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                    </ul>
-              </div>
+                    <li *ngFor="let quote of Model.PlayedQuotes" class="list-group-item d-flex justify-content-between align-items-center">
+                        {{quote.Text}}
+                        <span class="badge badge-light">{{quote.PlayerName}}</span>
+                    </li>
+                </ul>
+            </div>
             
             <div class="card">
-                <img class="card-img-top card-img-bottom" [src]="Model.Picture" />
+                <img class="card-img" [src]="Model.Picture" />
             </div>
     </div>
     <div class="col-md-4">
         
         <div class="card" >
-                <div class="card-header">Other Players</div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-              </div>
+            <div class="card-header">Other Players</div>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let player of Model.Players" class="list-group-item">
+                    <img style="height: 16px; width: 16px" class="rounded">
+                    {{player.Name}}
+                </li>
+            </ul>
         </div>
+    </div>
 </div>
