@@ -4,7 +4,7 @@
         <div class="card" >
             <div class="card-header">My Quotes</div>
             <ul class="list-group list-group-flush my-quotes">
-                <li *ngFor="let quote of Model.MyQuotes" 
+                <li *ngFor="let quote of Me.MyQuotes" 
                     (click)="submitQuote($event, quote)"
                     [ngClass]="{ enabled: !MyPlayedQuote() }"
                     class="list-group-item" >
@@ -33,7 +33,7 @@
             </div>
             
             <div class="card">
-                <img class="card-img" [src]="Model.Picture" />
+                <img class="card-img" [src]="Model.Picture.url" />
             </div>
     </div>
     <div class="col-md-4">
