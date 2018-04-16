@@ -3,12 +3,12 @@
 
 export class Game {
 
-    Players: User[];
+    Players: User[] = [];
     DealerId: string;
     Picture: {
         url: string
     };
-    PlayedQuotes: Quote[];
+    PlayedQuotes: Quote[] = [];
 }
 
 export class User {
