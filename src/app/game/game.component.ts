@@ -37,8 +37,12 @@ export class GameComponent implements OnInit {
 
     if(this.MyPlayedQuote()) return;
 
-    this.Model.PlayedQuotes.push({ Text: text, PlayerName: this.Me.Name, Chosen: false });
-    this.Me.MyQuotes.splice( this.Me.MyQuotes.indexOf(text), 1 );
+    this.http.post(this._api + "/quotes", { Text: text, PlayerId: this.Me.Name })
+        .subscribe(data=> {
+            if(data.json().success){
+                this.Me.MyQuotes.splice( this.Me.MyQuotes.indexOf(text), 1 );
+            }
+        });
   }
 
   MyPlayedQuote = () => this.Model.PlayedQuotes.find( x => x.PlayerName == this.Me.Name );
