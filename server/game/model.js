@@ -123,7 +123,11 @@ function Game() {
         this.PlayedQuotes = [];
         this.Picture = null;
 
+        // remember. This is our login function. It s the function that gets called when a user sends joins for the first time.
         this.GetQuotes = (playerId) => {
+            if(!this.DealerId){
+                this.DealerId = playerId;
+            }
             if(this.Players.some(x=> x.PlayerId == playerId)){
                 
             }else{
