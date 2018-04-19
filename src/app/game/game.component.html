@@ -9,7 +9,7 @@
             <ul class="list-group list-group-flush my-quotes">
                 <li *ngFor="let quote of Me.MyQuotes" 
                     (click)="submitQuote($event, quote)"
-                    [ngClass]="{ enabled: !MyPlayedQuote() }"
+                    [ngClass]="{ enabled: !MyPlayedQuote() && !IAmTheDealer() }"
                     class="list-group-item" >
                     {{quote}}
                 </li>
