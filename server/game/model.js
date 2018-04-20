@@ -136,7 +136,10 @@ function Game() {
                 return QuotesStack.slice(iCurrentQuote, iCurrentQuote += 7);   
         }
         
-        this.FlipPicture = () => this.Picture = PicturesStack[iCurrentPicture = (iCurrentPicture+1) % PicturesStack.length ];
+        this.FlipPicture = () => {
+            this.Picture = PicturesStack[iCurrentPicture = (iCurrentPicture+1) % PicturesStack.length ];
+            this.PlayedQuotes = [];
+        } 
 
         this.SubmitQuote = (text, playerId) => {
             if(playerId == this.DealerId) throw Error("Dealer can't submit a quote");
