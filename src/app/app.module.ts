@@ -8,6 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HomeComponent } from './home/home.component';
 import { GameComponent } from './game/game.component';
+import { MessagesService } from './services/messages.service';
 
 
 
@@ -28,7 +29,7 @@ import { GameComponent } from './game/game.component';
         { path: '', redirectTo: '/home', pathMatch: 'full'}
     ])
   ],
-  providers: [],
+  providers: [MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
