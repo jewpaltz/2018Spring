@@ -11,6 +11,8 @@ declare var window: any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    
+    Pictures: string[] = []
 
   constructor(private _Game: GameService) {
 
@@ -41,11 +43,24 @@ export class LoginComponent implements OnInit {
   login(name: string, password: string){
       this._Game.login(name, password);
   }
+  
     fblogin(){
         FB.login((credentials:any)=>{
-            console.log(credentials);
-        })
+            FB.api("/me?fields=email,name,picture", (response: any)=> {
+                console.log(response);
+            })
+            FB.api("/me/photos", (response: any)=> {
+                for(var img of response.data){
+                    FB.api(`/${img.id}?fields=images`, (imgOb: any)=> {
+                        this.Pictures.push( imgOb.images[0].source );
+                        console.log(imgOb);
+                    })
+                }
+                console.log(response);
+            })
+        }, { scope: "email,user_photos" })
     }
+    
     googlelogin(){
         googleyolo.hint({
             supportedAuthMethods: [
